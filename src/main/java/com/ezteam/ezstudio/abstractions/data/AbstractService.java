@@ -3,9 +3,7 @@ package com.ezteam.ezstudio.abstractions.data;
 import lombok.*;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -20,9 +18,9 @@ import static java.util.stream.Collectors.toList;
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class AbstractService<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO> {
-    @NonNull protected AbstractRepository<Entity> repository;
-    private AbstractBundle bundle;
+public class AbstractService<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO> {
+
+    private AbstractRepository<Entity> repository;
 
     @Transactional(readOnly = true)
     public List<DTO> getAll() {

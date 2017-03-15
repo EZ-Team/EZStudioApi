@@ -1,5 +1,6 @@
-package com.ezteam.ezstudio.abstractions.data;
+package com.ezteam.ezstudio.routes.projects;
 
+import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -16,9 +17,9 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
-public class AbstractEntity {
+public class ProjectEntity extends AbstractEntity {
     @Id
     @GeneratedValue
     protected Long id;

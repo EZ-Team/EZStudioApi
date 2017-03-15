@@ -1,8 +1,11 @@
 package com.ezteam.ezstudio.abstractions.data;
 
 import lombok.*;
-import org.springframework.stereotype.Repository;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -12,27 +15,47 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class AbstractController<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO> {
+public class AbstractController<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO> {
 
     @NonNull protected AbstractService<Adapter, Entity, DTO> service;
 
-    public DTO create(DTO dto) {
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public DTO create(@RequestBody @Valid DTO dto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            throw new InvalidException();
+        }
         return service.create(dto);
     }
 
+    @GetMapping
     public List<DTO> getAll() {
         return service.getAll();
     }
 
-    public DTO getById(Long id) {
-        return service.findById(id);
+    @GetMapping("/{id}")
+    public DTO getById(@PathVariable("id") Long id) {
+        DTO dto = service.findById(id);
+        if (dto == null) {
+            throw new NotFoundException();
+        }
+        return dto;
     }
 
-    public DTO updateById(Long id, DTO newEntity) {
+    @PutMapping("/{id}")
+    public DTO updateById(@PathVariable("id") Long id, @RequestBody @Valid DTO newEntity, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            throw new InvalidException();
+        }
         return service.updateById(id, newEntity);
     }
 
-    public DTO deleteById(Long id) {
-        return service.deleteById(id);
+    @DeleteMapping("/{id}")
+    public DTO deleteById(@PathVariable("id") Long id) {
+        DTO dto = service.deleteById(id);
+        if (dto == null) {
+            throw new NotFoundException();
+        }
+        return dto;
     }
 }

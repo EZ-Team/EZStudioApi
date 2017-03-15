@@ -1,4 +1,4 @@
-package com.ezteam.ezstudio.abstractions.data;
+package com.ezteam.ezstudio.routes.projects;
 
 /**
  * @file AbstractAdapter.java
@@ -7,7 +7,7 @@ package com.ezteam.ezstudio.abstractions.data;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
-public class AbstractAdapter {
+public abstract class ProjectAdapter  {
 
     public static AbstractEntity toEntity(AbstractDTO dto) {
         return dto != null ? callEntityBuilder(dto) : null;

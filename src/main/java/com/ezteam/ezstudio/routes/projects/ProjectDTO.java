@@ -1,5 +1,6 @@
-package com.ezteam.ezstudio.abstractions.data;
+package com.ezteam.ezstudio.routes.projects;
 
+import com.ezteam.ezstudio.abstractions.data.AbstractDTO;
 import lombok.*;
 
 import java.io.Serializable;
@@ -15,7 +16,6 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
-public class AbstractDTO implements Serializable {
-    @NonNull
-    protected Long id;
+public class ProjectDTO extends AbstractDTO {
+
 }
