@@ -15,10 +15,9 @@ import static java.util.stream.Collectors.toList;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class ProjectService extends AbstractService<ProjectAdapter,ProjectEntity, ProjectDTO> {
+@Builder
+public class ProjectService extends AbstractService<ProjectAdapter, ProjectEntity, ProjectDTO> {
 
 }

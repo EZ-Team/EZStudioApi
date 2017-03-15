@@ -1,8 +1,7 @@
 package com.ezteam.ezstudio.routes.projects;
 
 import com.ezteam.ezstudio.abstractions.data.AbstractRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.stereotype.Repository;
 
 /**
  * @file AbstractRepository.java
@@ -11,6 +10,6 @@ import org.springframework.data.repository.NoRepositoryBean;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
-@NoRepositoryBean
+@Repository
 public interface ProjectRepository extends AbstractRepository<ProjectEntity> {
 }

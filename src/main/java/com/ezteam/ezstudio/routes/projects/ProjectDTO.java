@@ -3,8 +3,6 @@ package com.ezteam.ezstudio.routes.projects;
 import com.ezteam.ezstudio.abstractions.data.AbstractDTO;
 import lombok.*;
 
-import java.io.Serializable;
-
 /**
  * @file AbstractDTO.java
  * @description Abstraction for DTO (Data Transfer Object) pattern that defines objects in Java runtime context
@@ -14,8 +12,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor
+@Builder
 public class ProjectDTO extends AbstractDTO {
 
 }

@@ -4,8 +4,6 @@ import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 /**
  * @file AbstractDTO.java
@@ -17,10 +15,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor
+@Builder
 public class ProjectEntity extends AbstractEntity {
-    @Id
-    @GeneratedValue
-    protected Long id;
+
 }
