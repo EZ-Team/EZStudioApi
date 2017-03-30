@@ -1,6 +1,9 @@
 package com.ezteam.ezstudio.routes.projects;
 
 import com.ezteam.ezstudio.abstractions.data.AbstractAdapter;
+import com.ezteam.ezstudio.abstractions.data.AbstractDTO;
+import com.ezteam.ezstudio.abstractions.data.AbstractDomain;
+import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 
 /**
  * @file AbstractAdapter.java
@@ -10,5 +13,24 @@ import com.ezteam.ezstudio.abstractions.data.AbstractAdapter;
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
 public class ProjectAdapter extends AbstractAdapter {
+    protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
+        return null;
+    }
+    protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
+        return null;
+    }
 
+    protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
+        return null;
+    }
+    protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
+        return null;
+    }
+
+    protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
+        return null;
+    }
+    protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
+        return null;
+    }
 }

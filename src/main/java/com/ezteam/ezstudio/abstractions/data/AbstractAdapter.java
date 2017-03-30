@@ -12,16 +12,42 @@ public class AbstractAdapter {
     public static AbstractEntity toEntity(AbstractDTO dto) {
         return dto != null ? callEntityBuilder(dto) : null;
     }
+    public static AbstractEntity toEntity(AbstractDomain domain){
+        return domain != null ? callEntityBuilder(domain) : null;
+    }
 
     public static AbstractDTO toDto(AbstractEntity entity){
         return entity != null ? callDtoBuilder(entity) : null;
+    }
+    public static AbstractDTO toDto(AbstractDomain domain){
+        return domain != null ? callDtoBuilder(domain) : null;
+    }
+
+    public static AbstractDomain toDomain(AbstractEntity entity){
+        return entity != null ? callDomainBuilder(entity) : null;
+    }
+    public static AbstractDomain toDomain(AbstractDTO dto){
+        return dto != null ? callDomainBuilder(dto) : null;
     }
 
     protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
         return null;
     }
+    protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
+        return null;
+    }
 
     protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
+        return null;
+    }
+    protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
+        return null;
+    }
+
+    protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
+        return null;
+    }
+    protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
         return null;
     }
 

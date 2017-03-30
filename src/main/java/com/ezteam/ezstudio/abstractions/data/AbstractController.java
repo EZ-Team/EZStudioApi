@@ -1,8 +1,7 @@
 package com.ezteam.ezstudio.abstractions.data;
 
-import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,15 +9,13 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * Created by Aurelien on 04-Mar-17.
+ * Created by a70850 on 27/03/2017.
  */
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-public class AbstractController<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO> {
+public class AbstractController<DTO extends AbstractDTO,
+                                    Service extends AbstractService> {
 
-    @NonNull protected AbstractService<Adapter, Entity, DTO> service;
+    @Autowired
+    protected Service service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -26,7 +23,7 @@ public class AbstractController<Adapter extends AbstractAdapter, Entity extends 
         if(bindingResult.hasErrors()) {
             throw new InvalidException();
         }
-        return service.create(dto);
+        return (DTO) service.create(dto);
     }
 
     @GetMapping
@@ -36,7 +33,7 @@ public class AbstractController<Adapter extends AbstractAdapter, Entity extends 
 
     @GetMapping("/{id}")
     public DTO getById(@PathVariable("id") Long id) {
-        DTO dto = service.findById(id);
+        DTO dto = (DTO) service.findById(id);
         if (dto == null) {
             throw new NotFoundException();
         }
@@ -48,12 +45,12 @@ public class AbstractController<Adapter extends AbstractAdapter, Entity extends 
         if(bindingResult.hasErrors()) {
             throw new InvalidException();
         }
-        return service.updateById(id, newEntity);
+        return (DTO) service.updateById(id, newEntity);
     }
 
     @DeleteMapping("/{id}")
     public DTO deleteById(@PathVariable("id") Long id) {
-        DTO dto = service.deleteById(id);
+        DTO dto = (DTO) service.deleteById(id);
         if (dto == null) {
             throw new NotFoundException();
         }

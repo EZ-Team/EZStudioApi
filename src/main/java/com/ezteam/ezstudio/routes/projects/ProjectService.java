@@ -2,6 +2,7 @@ package com.ezteam.ezstudio.routes.projects;
 
 import com.ezteam.ezstudio.abstractions.data.AbstractService;
 import lombok.*;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,9 +16,7 @@ import static java.util.stream.Collectors.toList;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
-@Getter
-@Setter
-@Builder
-public class ProjectService extends AbstractService<ProjectAdapter, ProjectEntity, ProjectDTO> {
+@Service
+public class ProjectService extends AbstractService<ProjectAdapter, ProjectEntity, ProjectDTO, ProjectRepository> {
 
 }

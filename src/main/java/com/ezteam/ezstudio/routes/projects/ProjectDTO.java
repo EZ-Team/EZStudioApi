@@ -10,8 +10,7 @@ import lombok.*;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
-@Getter
-@Setter
+@Data
 @Builder
 public class ProjectDTO extends AbstractDTO {
 

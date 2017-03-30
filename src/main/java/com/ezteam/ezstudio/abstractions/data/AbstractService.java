@@ -1,6 +1,11 @@
 package com.ezteam.ezstudio.abstractions.data;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -8,19 +13,17 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 /**
- * @file AbstractService.java
- * @description Abstraction for Service pattern that defines the actions that objects will use for CRUD treatments
- * @package com.ezteam.ezstudio
- * @date 04-Mar-2017
- * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
+ * Created by a70850 on 28/03/2017.
  */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class AbstractService<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO> {
+@Slf4j
+public class AbstractService<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO, Repository extends AbstractRepository> {
 
-    private AbstractRepository<Entity> repository;
+    @Autowired
+    private Repository repository;
 
     @Transactional(readOnly = true)
     public List<DTO> getAll() {
@@ -32,9 +35,10 @@ public class AbstractService<Adapter extends AbstractAdapter, Entity extends Abs
     @Transactional(readOnly = true)
     public DTO findById(Long id) {
         if(id == null) {
+            log.warn("Given id was null");
             return null;
         }
-        Entity entity = repository.findOne(id);
+        Entity entity = (Entity) repository.findOne(id);
         DTO result = (DTO) Adapter.toDto(entity);
         return result;
     }
@@ -51,6 +55,7 @@ public class AbstractService<Adapter extends AbstractAdapter, Entity extends Abs
     public DTO deleteById(Long id) {
         DTO result = findById(id);
         if(result != null) {
+            log.info("Found an element, deleting it");
             repository.delete(id);
         }
         return result;
@@ -61,6 +66,7 @@ public class AbstractService<Adapter extends AbstractAdapter, Entity extends Abs
         DTO oldEntity = findById(id);
 
         if(oldEntity != null) {
+            log.debug("Entity exists : {}", oldEntity);
             newEntity.setId(oldEntity.getId());
             newEntity = create(newEntity);
         }

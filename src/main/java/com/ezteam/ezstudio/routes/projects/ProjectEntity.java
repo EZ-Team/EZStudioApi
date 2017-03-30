@@ -13,8 +13,7 @@ import javax.persistence.Entity;
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
 @Entity
-@Getter
-@Setter
+@Data
 @Builder
 public class ProjectEntity extends AbstractEntity {
 
