@@ -1,10 +1,14 @@
 package com.ezteam.ezstudio.abstractions.data;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
+import java.util.Date;
 
 /**
  * @file AbstractDTO.java
@@ -22,4 +26,10 @@ public class AbstractEntity {
     @Id
     @GeneratedValue
     protected Long id;
+
+    @CreationTimestamp
+    protected Date creationDate;
+
+    @UpdateTimestamp
+    protected Date lastUpdate;
 }

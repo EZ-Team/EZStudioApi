@@ -5,5 +5,6 @@ import com.ezteam.ezstudio.abstractions.data.AbstractDomain;
 /**
  * Created by a70850 on 30/03/2017.
  */
-public class Project extends AbstractDomain {
+public abstract class Project extends AbstractDomain {
+
 }

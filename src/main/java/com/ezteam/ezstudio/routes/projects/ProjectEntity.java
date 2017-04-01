@@ -1,9 +1,12 @@
 package com.ezteam.ezstudio.routes.projects;
 
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
+import com.ezteam.ezstudio.routes.instruments.InstrumentEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @file AbstractDTO.java
@@ -15,6 +18,29 @@ import javax.persistence.Entity;
 @Entity
 @Data
 @Builder
+@Table(name = "Project")
 public class ProjectEntity extends AbstractEntity {
 
+    @Id
+    @GeneratedValue
+    @OneToOne(mappedBy = "authorId")
+    protected Long id;
+
+    private Long authorId;
+
+    @Column(nullable = false)
+    private Double status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ProjectType type;
+
+    @ManyToOne(targetEntity = ProjectEntity.class, cascade = CascadeType.ALL)
+    private ProjectEntity parent;
+
+    @OneToMany(targetEntity = ProjectEntity.class, mappedBy = "id")
+    private List<ProjectEntity> children;
+
+    @ManyToMany(targetEntity = InstrumentEntity.class)
+    private List<InstrumentEntity> instruments;
 }

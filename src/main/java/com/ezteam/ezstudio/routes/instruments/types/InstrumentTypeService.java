@@ -1,4 +1,4 @@
-package com.ezteam.ezstudio.routes.projects;
+package com.ezteam.ezstudio.routes.instruments.types;
 
 import com.ezteam.ezstudio.abstractions.data.AbstractService;
 import org.springframework.stereotype.Service;
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Service;
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
 @Service
-public class ProjectService extends AbstractService<ProjectAdapter, ProjectEntity, ProjectDTO, ProjectRepository> {
+public class InstrumentTypeService extends AbstractService<InstrumentTypeAdapter, InstrumentTypeEntity, InstrumentTypeDTO, InstrumentTypeRepository> {
 
 }
