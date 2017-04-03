@@ -4,6 +4,10 @@ import com.ezteam.ezstudio.abstractions.data.AbstractAdapter;
 import com.ezteam.ezstudio.abstractions.data.AbstractDTO;
 import com.ezteam.ezstudio.abstractions.data.AbstractDomain;
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
+import com.ezteam.ezstudio.routes.instruments.types.InstrumentType;
+import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeAdapter;
+import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeDTO;
+import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeEntity;
 
 /**
  * @file AbstractAdapter.java
@@ -14,23 +18,49 @@ import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
  */
 public class InstrumentAdapter extends AbstractAdapter {
     protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
-        return null;
+        InstrumentDTO curr = (InstrumentDTO) dto;
+        return InstrumentEntity.builder()
+                .id(curr.getId())
+                .name(curr.getName())
+                .category((InstrumentTypeEntity) InstrumentTypeAdapter.toEntity(curr.getCategory()))
+                .build();
     }
     protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
-        return null;
+        Instrument curr = (Instrument) domain;
+        return InstrumentEntity.builder()
+                .name(curr.getName())
+                .category((InstrumentTypeEntity) InstrumentTypeAdapter.toEntity(curr.getCategory()))
+                .build();
     }
 
     protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
-        return null;
+        InstrumentEntity curr = (InstrumentEntity) entity;
+        return InstrumentDTO.builder()
+                .id(curr.getId())
+                .name(curr.getName())
+                .category((InstrumentTypeDTO) InstrumentTypeAdapter.toDto(curr.getCategory()))
+                .build();
     }
     protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
-        return null;
+        Instrument curr = (Instrument) domain;
+        return InstrumentDTO.builder()
+                .name(curr.getName())
+                .category((InstrumentTypeDTO) InstrumentTypeAdapter.toDto(curr.getCategory()))
+                .build();
     }
 
     protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
-        return null;
+        InstrumentEntity curr = (InstrumentEntity) entity;
+        return Instrument.builder()
+                .name(curr.getName())
+                .category((InstrumentType) InstrumentTypeAdapter.toDomain(curr.getCategory()))
+                .build();
     }
     protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
-        return null;
+        InstrumentDTO curr = (InstrumentDTO) dto;
+        return Instrument.builder()
+                .name(curr.getName())
+                .category((InstrumentType) InstrumentTypeAdapter.toDomain(curr.getCategory()))
+                .build();
     }
 }

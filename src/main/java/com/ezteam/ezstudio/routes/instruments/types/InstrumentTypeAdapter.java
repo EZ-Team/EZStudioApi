@@ -14,23 +14,43 @@ import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
  */
 public class InstrumentTypeAdapter extends AbstractAdapter {
     protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
-        return null;
+        InstrumentTypeDTO curr = (InstrumentTypeDTO) dto;
+        return InstrumentTypeEntity.builder()
+                .id(curr.getId())
+                .name(curr.getName())
+                .build();
     }
     protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
-        return null;
+        InstrumentType curr = (InstrumentType) domain;
+        return InstrumentTypeEntity.builder()
+                .name(curr.getName())
+                .build();
     }
 
     protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
-        return null;
+        InstrumentTypeEntity curr = (InstrumentTypeEntity) entity;
+        return InstrumentTypeDTO.builder()
+                .id(curr.getId())
+                .name(curr.getName())
+                .build();
     }
     protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
-        return null;
+        InstrumentType curr = (InstrumentType) domain;
+        return InstrumentTypeDTO.builder()
+                .name(curr.getName())
+                .build();
     }
 
     protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
-        return null;
+        InstrumentTypeEntity curr = (InstrumentTypeEntity) entity;
+        return InstrumentType.builder()
+                .name(curr.getName())
+                .build();
     }
     protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
-        return null;
+        InstrumentTypeDTO curr = (InstrumentTypeDTO) dto;
+        return InstrumentType.builder()
+                .name(curr.getName())
+                .build();
     }
 }

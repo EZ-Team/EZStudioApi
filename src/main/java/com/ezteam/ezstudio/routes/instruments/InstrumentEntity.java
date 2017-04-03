@@ -3,10 +3,10 @@ package com.ezteam.ezstudio.routes.instruments;
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeEntity;
 import com.ezteam.ezstudio.routes.projects.ProjectEntity;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +21,10 @@ import java.util.List;
 @Builder
 @Table(name = "Instrument")
 public class InstrumentEntity extends AbstractEntity {
+
+    @Id
+    @GeneratedValue
+    protected Long id;
 
     private String name;
 

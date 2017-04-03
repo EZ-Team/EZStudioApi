@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 public class AbstractDTO implements Serializable {
     @NonNull

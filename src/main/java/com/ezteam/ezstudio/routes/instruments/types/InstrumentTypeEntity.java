@@ -22,6 +22,10 @@ import java.util.List;
 @Table(name = "InstrumentType")
 public class InstrumentTypeEntity extends AbstractEntity {
 
+    @Id
+    @GeneratedValue
+    protected Long id;
+
     private String name;
 
     @OneToMany(targetEntity = InstrumentEntity.class, mappedBy = "id")

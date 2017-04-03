@@ -1,6 +1,8 @@
 package com.ezteam.ezstudio.routes.instruments;
 
 import com.ezteam.ezstudio.abstractions.data.AbstractDTO;
+import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeDTO;
+import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeEntity;
 import lombok.*;
 
 /**
@@ -14,4 +16,9 @@ import lombok.*;
 @Builder
 public class InstrumentDTO extends AbstractDTO {
 
+    private Long id;
+
+    private String name;
+
+    private InstrumentTypeDTO category;
 }

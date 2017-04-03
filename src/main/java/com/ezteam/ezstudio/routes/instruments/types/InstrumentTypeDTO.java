@@ -14,4 +14,7 @@ import lombok.*;
 @Builder
 public class InstrumentTypeDTO extends AbstractDTO {
 
+    private Long id;
+
+    private String name;
 }
