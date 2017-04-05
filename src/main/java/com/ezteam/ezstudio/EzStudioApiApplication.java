@@ -2,6 +2,9 @@ package com.ezteam.ezstudio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
 /**
  * @file EzStudioApiApplication.java
@@ -11,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
 @SpringBootApplication
+@EnableOAuth2Sso
 public class EzStudioApiApplication {
 
 	public static void main(String[] args) {
