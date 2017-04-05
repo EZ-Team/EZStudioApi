@@ -5,7 +5,13 @@ security:
     client:
       client-id: acme
       client-secret: acmesecret
-      access-token-uri: http://localhost:8080/oauth/token
-      user-authorization-uri: http://localhost:8080/oauth/authorize
+      access-token-uri: http://localhost:9999/oauth/token
+      user-authorization-uri: http://localhost:9999/oauth/authorize
     resource:
-      user-info-uri: http://localhost:8080/me
+      user-info-uri: http://localhost:9999/me
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+  application:
+    name: ezstudio-api
