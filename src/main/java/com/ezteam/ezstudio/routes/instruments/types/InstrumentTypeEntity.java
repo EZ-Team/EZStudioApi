@@ -19,7 +19,6 @@ import java.util.List;
 @Entity
 @Data
 @Builder
-@Table(name = "InstrumentType")
 public class InstrumentTypeEntity extends AbstractEntity {
 
     @Id

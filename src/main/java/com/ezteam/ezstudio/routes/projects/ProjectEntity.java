@@ -18,7 +18,6 @@ import java.util.List;
 @Entity
 @Data
 @Builder
-@Table(name = "Project")
 public class ProjectEntity extends AbstractEntity {
 
     @Id

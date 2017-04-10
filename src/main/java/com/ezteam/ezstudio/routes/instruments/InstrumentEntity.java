@@ -5,6 +5,7 @@ import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeEntity;
 import com.ezteam.ezstudio.routes.projects.ProjectEntity;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,7 +20,6 @@ import java.util.List;
 @Entity
 @Data
 @Builder
-@Table(name = "Instrument")
 public class InstrumentEntity extends AbstractEntity {
 
     @Id
