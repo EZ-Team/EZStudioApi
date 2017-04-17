@@ -1,12 +1,22 @@
 security:
   oauth2:
     client:
-      client-id: acme
-      client-secret: acmesecret
-      access-token-uri: http://localhost:9999/oauth/token
-      user-authorization-uri: http://localhost:9999/oauth/authorize
+      clientId: 67247486d51c37e5985a
+      clientSecret: ebd87c588800e56ed30893229fc59658cfaf3a45
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      clientAuthenticationScheme: form
     resource:
-      user-info-uri: http://localhost:9999/me
+      userInfoUri: https://api.github.com/user
+github:
+  client:
+    clientId: 67247486d51c37e5985a
+    clientSecret: ebd87c588800e56ed30893229fc59658cfaf3a45
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
 spring:
   cloud:
     config:
