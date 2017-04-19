@@ -6,8 +6,11 @@ import com.ezteam.ezstudio.abstractions.data.AbstractDomain;
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import com.ezteam.ezstudio.routes.instruments.types.InstrumentType;
 import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeAdapter;
+import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeAdapter;
 import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeDTO;
 import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @file AbstractAdapter.java
@@ -16,51 +19,61 @@ import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeEntity;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
+@Service
 public class InstrumentAdapter extends AbstractAdapter {
-    protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
+
+    private static InstrumentTypeAdapter instrumentTypeAdapter = new InstrumentTypeAdapter();
+
+    @Override
+    protected AbstractEntity callEntityBuilder(AbstractDTO dto) {
         InstrumentDTO curr = (InstrumentDTO) dto;
         return InstrumentEntity.builder()
                 .id(curr.getId())
                 .name(curr.getName())
-                .category((InstrumentTypeEntity) InstrumentTypeAdapter.toEntity(curr.getCategory()))
+                .category((InstrumentTypeEntity) instrumentTypeAdapter.toEntity(curr.getCategory()))
                 .build();
     }
-    protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
+    @Override
+    protected AbstractEntity callEntityBuilder(AbstractDomain domain) {
         Instrument curr = (Instrument) domain;
         return InstrumentEntity.builder()
                 .name(curr.getName())
-                .category((InstrumentTypeEntity) InstrumentTypeAdapter.toEntity(curr.getCategory()))
+                .category((InstrumentTypeEntity) instrumentTypeAdapter.toEntity(curr.getCategory()))
                 .build();
     }
 
-    protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
+    @Override
+    protected AbstractDTO callDtoBuilder(AbstractEntity entity) {
         InstrumentEntity curr = (InstrumentEntity) entity;
         return InstrumentDTO.builder()
                 .id(curr.getId())
                 .name(curr.getName())
-                .category((InstrumentTypeDTO) InstrumentTypeAdapter.toDto(curr.getCategory()))
+                .category((InstrumentTypeDTO) instrumentTypeAdapter.toDto(curr.getCategory()))
                 .build();
     }
-    protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
+    @Override
+    protected AbstractDTO callDtoBuilder(AbstractDomain domain) {
         Instrument curr = (Instrument) domain;
         return InstrumentDTO.builder()
                 .name(curr.getName())
-                .category((InstrumentTypeDTO) InstrumentTypeAdapter.toDto(curr.getCategory()))
+                .category((InstrumentTypeDTO) instrumentTypeAdapter.toDto(curr.getCategory()))
                 .build();
     }
 
-    protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
+    @Override
+    protected AbstractDomain callDomainBuilder(AbstractEntity entity) {
         InstrumentEntity curr = (InstrumentEntity) entity;
         return Instrument.builder()
                 .name(curr.getName())
-                .category((InstrumentType) InstrumentTypeAdapter.toDomain(curr.getCategory()))
+                .category((InstrumentType) instrumentTypeAdapter.toDomain(curr.getCategory()))
                 .build();
     }
-    protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
+    @Override
+    protected AbstractDomain callDomainBuilder(AbstractDTO dto) {
         InstrumentDTO curr = (InstrumentDTO) dto;
         return Instrument.builder()
                 .name(curr.getName())
-                .category((InstrumentType) InstrumentTypeAdapter.toDomain(curr.getCategory()))
+                .category((InstrumentType) instrumentTypeAdapter.toDomain(curr.getCategory()))
                 .build();
     }
 }

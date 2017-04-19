@@ -14,6 +14,7 @@ import lombok.*;
  */
 @Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class InstrumentDTO extends AbstractDTO {
 
     private Long id;

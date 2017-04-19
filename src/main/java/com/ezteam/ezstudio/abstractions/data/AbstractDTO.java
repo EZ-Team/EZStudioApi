@@ -16,6 +16,5 @@ import java.io.Serializable;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 public class AbstractDTO implements Serializable {
-    @NonNull
     protected Long id;
 }

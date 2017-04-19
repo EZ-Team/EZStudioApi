@@ -5,6 +5,7 @@ import com.ezteam.ezstudio.abstractions.data.AbstractDTO;
 import com.ezteam.ezstudio.abstractions.data.AbstractDomain;
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import com.google.common.collect.Lists;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,51 +16,71 @@ import java.util.List;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
+@Service
 public class UserAdapter extends AbstractAdapter {
-    protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
+
+    @Override
+    protected AbstractEntity callEntityBuilder(AbstractDTO dto) {
         UserDTO curr = (UserDTO) dto;
         return UserEntity.builder()
                 .id(curr.getId())
                 .login(curr.getLogin())
                 .password(curr.getPassword())
+                .role(curr.getRole())
+                .enabled(curr.isEnabled())
                 .build();
     }
-    protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
+    @Override
+    protected AbstractEntity callEntityBuilder(AbstractDomain domain) {
         User curr = (User) domain;
         return UserEntity.builder()
                 .login(curr.getLogin())
                 .password(curr.getPassword())
+                .role(curr.getRole())
+                .enabled(curr.isEnabled())
                 .build();
     }
 
-    protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
+    @Override
+    protected AbstractDTO callDtoBuilder(AbstractEntity entity) {
         UserEntity curr = (UserEntity) entity;
         return UserDTO.builder()
                 .id(curr.getId())
                 .login(curr.getLogin())
                 .password(curr.getPassword())
+                .role(curr.getRole())
+                .enabled(curr.isEnabled())
                 .build();
     }
-    protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
+    @Override
+    protected AbstractDTO callDtoBuilder(AbstractDomain domain) {
         User curr = (User) domain;
         return UserDTO.builder()
                 .login(curr.getLogin())
                 .password(curr.getPassword())
+                .role(curr.getRole())
+                .enabled(curr.isEnabled())
                 .build();
     }
 
-    protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
+    @Override
+    protected AbstractDomain callDomainBuilder(AbstractEntity entity) {
         UserEntity curr = (UserEntity) entity;
         return User.builder()
                 .login(curr.getLogin())
                 .password(curr.getPassword())
+                .role(curr.getRole())
+                .enabled(curr.isEnabled())
                 .build();
     }
-    protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
+    @Override
+    protected AbstractDomain callDomainBuilder(AbstractDTO dto) {
         UserDTO curr = (UserDTO) dto;
         return User.builder()
                 .login(curr.getLogin())
                 .password(curr.getPassword())
+                .role(curr.getRole())
+                .enabled(curr.isEnabled())
                 .build();
     }
 

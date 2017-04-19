@@ -25,6 +25,9 @@ public class AbstractService<Adapter extends AbstractAdapter, Entity extends Abs
     @Autowired
     protected Repository repository;
 
+    @Autowired
+    protected Adapter adapter;
+
     @Transactional(readOnly = true)
     public List<DTO> getAll() {
         List<Entity> results = repository.findAll();
@@ -39,15 +42,15 @@ public class AbstractService<Adapter extends AbstractAdapter, Entity extends Abs
             return null;
         }
         Entity entity = (Entity) repository.findOne(id);
-        DTO result = (DTO) Adapter.toDto(entity);
+        DTO result = (DTO) adapter.toDto(entity);
         return result;
     }
 
     @Transactional
     public DTO create(DTO dto) {
-        Entity entity = (Entity) Adapter.toEntity(dto);
+        Entity entity = (Entity) adapter.toEntity(dto);
         repository.save(entity);
-        DTO persistedAccount = (DTO) Adapter.toDto(entity);
+        DTO persistedAccount = (DTO) adapter.toDto(entity);
         return persistedAccount;
     }
 
@@ -77,6 +80,6 @@ public class AbstractService<Adapter extends AbstractAdapter, Entity extends Abs
     }
 
     protected List<DTO> convertEntityListToDtoList(List<Entity> entities) {
-        return entities != null ? entities.stream().map(Adapter::toDto).map(object -> (DTO) object).collect(toList()) : null;
+        return entities != null ? entities.stream().map(adapter::toDto).map(object -> (DTO) object).collect(toList()) : null;
     }
 }

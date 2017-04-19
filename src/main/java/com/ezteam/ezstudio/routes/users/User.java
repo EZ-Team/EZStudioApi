@@ -18,4 +18,6 @@ public class User extends AbstractDomain {
 
     private String login;
     private String password;
+    private Role role;
+    private boolean enabled;
 }

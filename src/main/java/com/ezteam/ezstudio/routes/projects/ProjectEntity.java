@@ -18,6 +18,7 @@ import java.util.List;
 @Entity
 @Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProjectEntity extends AbstractEntity {
 
     @Id

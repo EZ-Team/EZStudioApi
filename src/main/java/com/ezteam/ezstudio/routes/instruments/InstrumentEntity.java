@@ -3,9 +3,7 @@ package com.ezteam.ezstudio.routes.instruments;
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import com.ezteam.ezstudio.routes.instruments.types.InstrumentTypeEntity;
 import com.ezteam.ezstudio.routes.projects.ProjectEntity;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,6 +18,7 @@ import java.util.List;
 @Entity
 @Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class InstrumentEntity extends AbstractEntity {
 
     @Id

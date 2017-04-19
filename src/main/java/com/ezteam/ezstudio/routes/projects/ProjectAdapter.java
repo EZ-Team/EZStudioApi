@@ -5,6 +5,7 @@ import com.ezteam.ezstudio.abstractions.data.AbstractDTO;
 import com.ezteam.ezstudio.abstractions.data.AbstractDomain;
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import com.google.common.collect.Lists;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,8 +16,11 @@ import java.util.List;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
+@Service
 public class ProjectAdapter extends AbstractAdapter {
-    protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
+
+    @Override
+    protected AbstractEntity callEntityBuilder(AbstractDTO dto) {
         ProjectDTO curr = (ProjectDTO) dto;
         return ProjectEntity.builder()
                 .id(curr.getId())
@@ -24,7 +28,8 @@ public class ProjectAdapter extends AbstractAdapter {
                 .status(curr.getStatus())
                 .build();
     }
-    protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
+    @Override
+    protected AbstractEntity callEntityBuilder(AbstractDomain domain) {
         Project curr = (Project) domain;
         return ProjectEntity.builder()
                 .authorId(curr.getAuthorId())
@@ -32,7 +37,8 @@ public class ProjectAdapter extends AbstractAdapter {
                 .build();
     }
 
-    protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
+    @Override
+    protected AbstractDTO callDtoBuilder(AbstractEntity entity) {
         ProjectEntity curr = (ProjectEntity) entity;
         return ProjectDTO.builder()
                 .id(curr.getId())
@@ -42,7 +48,9 @@ public class ProjectAdapter extends AbstractAdapter {
                 .status(curr.getStatus())
                 .build();
     }
-    protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
+
+    @Override
+    protected AbstractDTO callDtoBuilder(AbstractDomain domain) {
         Project curr = (Project) domain;
         return ProjectDTO.builder()
                 .authorId(curr.getAuthorId())
@@ -52,7 +60,8 @@ public class ProjectAdapter extends AbstractAdapter {
                 .build();
     }
 
-    protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
+    @Override
+    protected AbstractDomain callDomainBuilder(AbstractEntity entity) {
         ProjectEntity curr = (ProjectEntity) entity;
         return Project.builder()
                 .authorId(curr.getAuthorId())
@@ -61,7 +70,8 @@ public class ProjectAdapter extends AbstractAdapter {
                 .status(curr.getStatus())
                 .build();
     }
-    protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
+    @Override
+    protected AbstractDomain callDomainBuilder(AbstractDTO dto) {
         ProjectDTO curr = (ProjectDTO) dto;
         return Project.builder()
                 .authorId(curr.getAuthorId())
@@ -71,14 +81,14 @@ public class ProjectAdapter extends AbstractAdapter {
                 .build();
     }
 
-    private static List<Long> childrenToLongList(ProjectEntity entity) {
+    private List<Long> childrenToLongList(ProjectEntity entity) {
         return entity != null ?
                 Lists.transform(entity.getChildren(),
                         (child) -> child != null ? child.getId() : null) :
                 null;
     }
 
-    private static Long parentToLong(ProjectEntity entity) {
+    private Long parentToLong(ProjectEntity entity) {
         return entity != null ?
                 entity.getParent().getId() :
                 null;

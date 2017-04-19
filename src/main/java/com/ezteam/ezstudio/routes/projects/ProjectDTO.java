@@ -14,6 +14,7 @@ import java.util.List;
  */
 @Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProjectDTO extends AbstractDTO {
 
     private Long id;

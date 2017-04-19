@@ -1,6 +1,8 @@
 package com.ezteam.ezstudio.routes.instruments.types;
 
 import com.ezteam.ezstudio.abstractions.data.AbstractDomain;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,6 +11,7 @@ import lombok.Data;
  */
 @Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class InstrumentType extends AbstractDomain {
 
     private String name;

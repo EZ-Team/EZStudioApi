@@ -18,25 +18,4 @@ import java.security.NoSuchProviderException;
 @Service
 public class UserService extends AbstractService<UserAdapter, UserEntity, UserDTO, UserRepository> {
 
-    @Transactional
-    public UserDTO create(UserDTO dto) {
-        MessageDigest mda = null;
-        try {
-            mda = MessageDigest.getInstance("SHA-512", "BC");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchProviderException e) {
-            e.printStackTrace();
-        }
-
-        if(mda == null) {
-            return null;
-        }
-
-        String password = mda.digest(dto.getPassword().getBytes()).toString();
-        dto.setPassword(password);
-        return super.create(dto);
-    }
-
-
 }

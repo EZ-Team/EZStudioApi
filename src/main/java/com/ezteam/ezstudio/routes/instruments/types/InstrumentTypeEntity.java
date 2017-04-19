@@ -19,6 +19,7 @@ import java.util.List;
 @Entity
 @Data
 @Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class InstrumentTypeEntity extends AbstractEntity {
 
     @Id

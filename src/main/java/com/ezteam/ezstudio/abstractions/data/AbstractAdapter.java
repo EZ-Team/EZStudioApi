@@ -1,5 +1,7 @@
 package com.ezteam.ezstudio.abstractions.data;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @file AbstractAdapter.java
  * @description Abstraction for Adapter pattern for DTO/Entity conversion
@@ -9,45 +11,45 @@ package com.ezteam.ezstudio.abstractions.data;
  */
 public class AbstractAdapter {
 
-    public static AbstractEntity toEntity(AbstractDTO dto) {
+    public AbstractEntity toEntity(AbstractDTO dto) {
         return dto != null ? callEntityBuilder(dto) : null;
     }
-    public static AbstractEntity toEntity(AbstractDomain domain){
+    public AbstractEntity toEntity(AbstractDomain domain){
         return domain != null ? callEntityBuilder(domain) : null;
     }
 
-    public static AbstractDTO toDto(AbstractEntity entity){
+    public AbstractDTO toDto(AbstractEntity entity){
         return entity != null ? callDtoBuilder(entity) : null;
     }
-    public static AbstractDTO toDto(AbstractDomain domain){
+    public AbstractDTO toDto(AbstractDomain domain){
         return domain != null ? callDtoBuilder(domain) : null;
     }
 
-    public static AbstractDomain toDomain(AbstractEntity entity){
+    public AbstractDomain toDomain(AbstractEntity entity){
         return entity != null ? callDomainBuilder(entity) : null;
     }
-    public static AbstractDomain toDomain(AbstractDTO dto){
+    public AbstractDomain toDomain(AbstractDTO dto){
         return dto != null ? callDomainBuilder(dto) : null;
     }
 
-    protected static AbstractEntity callEntityBuilder(AbstractDTO dto) {
+    protected AbstractEntity callEntityBuilder(AbstractDTO dto) {
         return null;
     }
-    protected static AbstractEntity callEntityBuilder(AbstractDomain domain) {
-        return null;
-    }
-
-    protected static AbstractDTO callDtoBuilder(AbstractEntity entity) {
-        return null;
-    }
-    protected static AbstractDTO callDtoBuilder(AbstractDomain domain) {
+    protected AbstractEntity callEntityBuilder(AbstractDomain domain) {
         return null;
     }
 
-    protected static AbstractDomain callDomainBuilder(AbstractEntity entity) {
+    protected AbstractDTO callDtoBuilder(AbstractEntity entity) {
         return null;
     }
-    protected static AbstractDomain callDomainBuilder(AbstractDTO dto) {
+    protected AbstractDTO callDtoBuilder(AbstractDomain domain) {
+        return null;
+    }
+
+    protected AbstractDomain callDomainBuilder(AbstractEntity entity) {
+        return null;
+    }
+    protected AbstractDomain callDomainBuilder(AbstractDTO dto) {
         return null;
     }
 

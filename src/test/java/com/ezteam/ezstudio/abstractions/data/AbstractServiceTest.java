@@ -27,6 +27,7 @@ public class AbstractServiceTest {
     @InjectMocks AbstractService service;
 
     @Mock AbstractRepository repository;
+    @Mock AbstractAdapter adapter;
 
     private static final Long DEFAULT_ID = 1l;
     private static final AbstractEntity DEFAULT_ENTITY = new AbstractEntity();
@@ -36,7 +37,7 @@ public class AbstractServiceTest {
     public void shouldFindById() {
         PowerMockito.spy(AbstractAdapter.class);
         Mockito.doReturn(DEFAULT_ENTITY).when(repository).findOne(DEFAULT_ID);
-        BDDMockito.given(AbstractAdapter.toDto(DEFAULT_ENTITY)).willReturn(DEFAULT_DTO);
+        Mockito.doReturn(DEFAULT_DTO).when(adapter).toDto(DEFAULT_ENTITY);
         AbstractDTO result = service.findById(DEFAULT_ID);
 
         assertThat(result).isEqualTo(DEFAULT_DTO);
