@@ -23,7 +23,7 @@ import static java.util.stream.Collectors.toList;
 public class AbstractService<Adapter extends AbstractAdapter, Entity extends AbstractEntity, DTO extends AbstractDTO, Repository extends AbstractRepository> {
 
     @Autowired
-    private Repository repository;
+    protected Repository repository;
 
     @Transactional(readOnly = true)
     public List<DTO> getAll() {

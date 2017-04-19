@@ -1,22 +1,3 @@
-security:
-  oauth2:
-    client:
-      clientId: 67247486d51c37e5985a
-      clientSecret: ebd87c588800e56ed30893229fc59658cfaf3a45
-      accessTokenUri: https://github.com/login/oauth/access_token
-      userAuthorizationUri: https://github.com/login/oauth/authorize
-      clientAuthenticationScheme: form
-    resource:
-      userInfoUri: https://api.github.com/user
-github:
-  client:
-    clientId: 67247486d51c37e5985a
-    clientSecret: ebd87c588800e56ed30893229fc59658cfaf3a45
-    accessTokenUri: https://github.com/login/oauth/access_token
-    userAuthorizationUri: https://github.com/login/oauth/authorize
-    clientAuthenticationScheme: form
-  resource:
-    userInfoUri: https://api.github.com/user
 spring:
   cloud:
     config:
