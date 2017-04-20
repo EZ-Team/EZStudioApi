@@ -17,18 +17,16 @@ import java.util.Date;
  * @date 04-Mar-2017
  * @author ACID-KILLA666 <aurelien.duval6@gmail.com>
  */
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 public class AbstractEntity {
-    @Id
-    @GeneratedValue
+
     protected Long id;
 
-    @CreationTimestamp
     protected Date creationDate;
 
-    @UpdateTimestamp
     protected Date lastUpdate;
 }

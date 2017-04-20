@@ -3,6 +3,8 @@ package com.ezteam.ezstudio.routes.projects;
 import com.ezteam.ezstudio.abstractions.data.AbstractEntity;
 import com.ezteam.ezstudio.routes.instruments.InstrumentEntity;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -43,4 +45,10 @@ public class ProjectEntity extends AbstractEntity {
 
     @ManyToMany(targetEntity = InstrumentEntity.class)
     private List<InstrumentEntity> instruments;
+
+    @CreationTimestamp
+    protected Date creationDate;
+
+    @UpdateTimestamp
+    protected Date lastUpdate;
 }

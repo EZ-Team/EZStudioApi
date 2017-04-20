@@ -7,8 +7,11 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,4 +39,10 @@ public class UserEntity extends AbstractEntity {
     private Role role;
 
     private boolean enabled;
+
+    @CreationTimestamp
+    protected Date creationDate;
+
+    @UpdateTimestamp
+    protected Date lastUpdate;
 }
