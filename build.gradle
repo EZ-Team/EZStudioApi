@@ -1,12 +1,14 @@
 buildscript {
 	ext {
 		springBootVersion = '1.5.2.RELEASE'
+		mysqlConnectorVersion = '6.0.6'
 	}
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("mysql:mysql-connector-java:${mysqlConnectorVersion}")
 	}
 }
 
@@ -44,4 +46,5 @@ dependencies {
 	testCompile ('org.assertj:assertj-core:3.6.2')
 	testCompile ('org.powermock:powermock-module-junit4:1.6.6')
     testCompile ('org.powermock:powermock-api-mockito:1.6.6')
+	compile("mysql:mysql-connector-java:${mysqlConnectorVersion}")
 }
