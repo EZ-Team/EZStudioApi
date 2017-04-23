@@ -21,6 +21,7 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class ProjectEntity extends AbstractEntity {
 
     @Id
@@ -30,11 +31,11 @@ public class ProjectEntity extends AbstractEntity {
 
     private Long authorId;
 
-    @Column(nullable = false)
+    @Column
     private Double status;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column
     private ProjectType type;
 
     @ManyToOne(targetEntity = ProjectEntity.class, cascade = CascadeType.ALL)

@@ -5,6 +5,7 @@ import com.ezteam.ezstudio.routes.instruments.InstrumentEntity;
 import com.ezteam.ezstudio.routes.projects.ProjectType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,14 +26,17 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class UserEntity extends AbstractEntity {
 
     @Id
     @GeneratedValue
     protected Long id;
 
+	@Column
     private String login;
 
+	@Column
     private String password;
 
     @Enumerated(EnumType.STRING)

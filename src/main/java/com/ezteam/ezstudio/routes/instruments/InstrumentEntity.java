@@ -22,12 +22,14 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class InstrumentEntity extends AbstractEntity {
 
     @Id
     @GeneratedValue
     protected Long id;
 
+	@Column
     private String name;
 
     @ManyToOne(targetEntity = ProjectEntity.class, cascade = CascadeType.ALL)

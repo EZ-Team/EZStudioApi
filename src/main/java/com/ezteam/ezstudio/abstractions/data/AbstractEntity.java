@@ -24,6 +24,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class AbstractEntity {
 
+	@Id
+	@GeneratedValue
     protected Long id;
 
     protected Date creationDate;
