@@ -8,9 +8,6 @@ import lombok.Data;
 
 import java.util.List;
 
-/**
- * Created by a70850 on 30/03/2017.
- */
 @Data
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)

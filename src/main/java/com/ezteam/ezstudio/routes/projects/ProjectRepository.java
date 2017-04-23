@@ -3,6 +3,8 @@ package com.ezteam.ezstudio.routes.projects;
 import com.ezteam.ezstudio.abstractions.data.AbstractRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @file AbstractRepository.java
  * @description Abstraction for Spring Repository pattern, easier to redefine
@@ -12,4 +14,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ProjectRepository extends AbstractRepository<ProjectEntity> {
+
 }

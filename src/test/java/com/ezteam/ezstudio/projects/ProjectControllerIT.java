@@ -24,7 +24,7 @@ public class ProjectControllerIT {
         RestAssured.port = localServerPort;
     }
 
-   /* @Test
+   @Test
     public void should_get_all_projects() {
         given()
                 .log().all()
@@ -34,5 +34,5 @@ public class ProjectControllerIT {
                 .log().all()
                 .statusCode(200)
                 .body("$", hasSize(4));
-    }*/
+    }
 }
