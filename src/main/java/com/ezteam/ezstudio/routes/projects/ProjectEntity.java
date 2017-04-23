@@ -22,6 +22,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
+@Table(name = "projects")
 public class ProjectEntity extends AbstractEntity {
 
     @Id

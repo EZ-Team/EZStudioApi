@@ -23,6 +23,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
+@Table(name = "instruments")
 public class InstrumentEntity extends AbstractEntity {
 
     @Id

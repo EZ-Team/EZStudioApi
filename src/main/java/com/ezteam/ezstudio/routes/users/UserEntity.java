@@ -27,6 +27,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
+@Table(name="users")
 public class UserEntity extends AbstractEntity {
 
     @Id
