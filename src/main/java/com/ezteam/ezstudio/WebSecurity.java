@@ -24,8 +24,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/swagger-ui.html", "/users").permitAll()
-                .antMatchers("/**").hasRole("USER")
+                .antMatchers("/**", "/users").permitAll()
+                //.antMatchers("/**").hasRole("USER")
                 .and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint())
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
